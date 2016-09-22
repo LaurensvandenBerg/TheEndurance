@@ -23,8 +23,14 @@ namespace Endurance.Controllers
 		[HttpGet]
 		public IEnumerable<CategoryExpense> Get()
 		{
+			FetchCategories();
+			var expenses = context.Expenses.ToList().GroupBy(e => e.Category);
+			return expenses.Select(e => new CategoryExpense { Expense = e.Sum(t => t.Cost), Category = e.Key.Title });
+		}
 
-			return context.Expenses.ToList().Select(e => new CategoryExpense { Expense = e.Cost, Category = e.Category.Title }) ;
+		private void FetchCategories()
+		{
+			context.Categories.ToList();
 		}
 	}
 }
