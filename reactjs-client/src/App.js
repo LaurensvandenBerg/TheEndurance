@@ -21,12 +21,29 @@ class App extends Component {
       <div className="App">
         <div className="App-header">
           <h2>Welcome to Endurance</h2>
+        </div>
+        <div className="App-Body">
+          <table className='table'>
+            <thead>
+              <tr>
+                <th>Category</th>
+                <th>Expense </th>
+              </tr>
+            </thead>
+            <tbody>
+              {this.state.transactions.map(transaction =>
+                <tr key={ transaction.category}>
+                  <td>{ transaction.category }</td>
+                  <td>{ transaction.expense }</td>
+                </tr>
+              ) }
+            </tbody>
+          </table>
           <VictoryPie
             data={this.state.transactions}
             x={"category"}
             y={"expense"}
-           />
-          
+           />          
         </div>
       </div>
     );
