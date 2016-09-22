@@ -34,6 +34,7 @@
     "redux": "^3.4.0",
     "redux-thunk": "^2.0.1",
     "redux-typed": "^1.0.0",
-    "webpack-externals-plugin": "^1.0.0"
+    "webpack-externals-plugin": "^1.0.0",
+    "react-sanfona": "0.0.15"
   }
 }
