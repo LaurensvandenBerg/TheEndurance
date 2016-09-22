@@ -1,5 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
+﻿using Endurance.DbContexts.DataModels;
+using Microsoft.EntityFrameworkCore;
 
 namespace Endurance.DbContexts
 {
@@ -14,26 +14,5 @@ namespace Endurance.DbContexts
 		{
 
 		}
-	}
-
-	public class Expense
-	{
-		public int Id { get; set; }
-
-		public string Description { get; set; }
-		
-		public Category Category { get; set; }
-
-		public double Cost { get; set; }
-
-		public DateTime CreationUTC { get; set; }
-	}
-
-	public class Category
-	{
-		public int Id { get; set; }
-		public string Title { get; set; }
-		public string Description { get; set; }
-		public bool IsExpense { get; set; }
 	}
 }

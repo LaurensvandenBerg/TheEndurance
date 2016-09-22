@@ -5,7 +5,7 @@ using System;
 
 namespace Endurance.Controllers
 {
-	[Route("api/[controller")]//TODO : check how routing works
+	[Route("api/[controller]")]//TODO : check how routing works
 	public class CategoriesController : Controller
 	{
 
@@ -103,9 +103,9 @@ namespace Endurance.Controllers
 		};
 
 		[HttpGet]
-		public Expense[] Get(string Category)
+		public Expense[] Get(string category)
 		{
-			return categories[Category];
+			return categories[category];
 		}
 	}
 }
