@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Endurance.DbContexts.DataModels
+﻿namespace Endurance.DbContexts.DataModels
 {
 	public class Category
 	{
