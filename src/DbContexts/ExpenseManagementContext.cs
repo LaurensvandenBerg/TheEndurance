@@ -9,6 +9,8 @@ namespace Endurance.DbContexts
 
 		public DbSet<Category> Categories { get; set; }
 
+		public DbSet<Suggestion> Suggestions { get; set; }
+
 		public ExpenseManagementContext(DbContextOptions<ExpenseManagementContext> options)
 		: base(options)
 		{
