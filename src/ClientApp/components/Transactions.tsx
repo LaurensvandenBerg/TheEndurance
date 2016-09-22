@@ -3,7 +3,6 @@ import { Link } from 'react-router';
 import { provide } from 'redux-typed';
 import { ApplicationState }  from '../store';
 import * as TransactionsState from '../store/Transactions';
-import Pie from './Pie';
 
 interface RouteParams {
 }
@@ -43,19 +42,6 @@ class Transactions extends React.Component<TransactionsProps, void> {
 				) }
 			</tbody>
 		</table>;
-	}
-
-	private renderTransactionsChart() {
-		return <Pie
-				//data={ this.state.data }
-				radius={ 150 }
-				hole={ 50 }
-				//colors={ colors }
-				labels={ true }
-				percent={ true }
-				strokeWidth={ 3 }
-				stroke={ '#fff' }
-			/>;
 	}
 }
 
