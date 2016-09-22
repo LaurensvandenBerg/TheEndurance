@@ -5,3 +5,4 @@ INSERT INTO [dbo].[Categories] ([Id], [Description], [IsExpense], [Title]) VALUE
 INSERT INTO [dbo].[Categories] ([Id], [Description], [IsExpense], [Title]) VALUES (4, N'Utilities', 1, N'Utilities')
 INSERT INTO [dbo].[Categories] ([Id], [Description], [IsExpense], [Title]) VALUES (5, N'Groceries', 1, N'Groceries')
 SET IDENTITY_INSERT [dbo].[Categories] OFF
+
