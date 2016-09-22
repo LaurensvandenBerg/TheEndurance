@@ -55,6 +55,9 @@ namespace Endurance
 
 			app.UseStaticFiles();
 
+            app.UseCors(builder =>
+                builder.WithOrigins("*"));
+
 			app.UseMvc(routes =>
 			{
 				routes.MapRoute(
