@@ -12,3 +12,4 @@
 /// <reference path="uglify-js/uglify-js.d.ts" />
 /// <reference path="webpack/webpack-env.d.ts" />
 /// <reference path="chartjs/chart.d.ts" />
+/// <reference path="react-chartjs/react-chartjs.d.ts" />
