@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Endurance.Controllers
 {
-	[Route("api/[controller")]
+	[Route("api/[controller]")]
 	public class SuggestionsController : Controller
 	{
 		Dictionary<string, Suggestion> suggestions = new Dictionary<string, Suggestion>
