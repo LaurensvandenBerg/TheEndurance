@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Transactions from './Transactions'
 
-class Home extends Component {
+class Overview extends Component {
   constructor(props) {
     super(props);
     
@@ -25,4 +25,4 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Overview;

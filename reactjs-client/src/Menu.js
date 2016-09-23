@@ -23,14 +23,14 @@ class Menu extends Component {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={ '/home' }>Endurance</Link>
+                    <Link className='navbar-brand' to={ '/overview' }>Endurance</Link>
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <Link to={ '/home' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-home'></span> Home
+                            <Link to={ '/overview' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-home'></span> Overview
                             </Link>
                         </li>
                         <li>

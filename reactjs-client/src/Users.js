@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { browserHistory } from 'react-router'
 import { getUsers } from './api/Users'
 
 class Users extends Component {
@@ -15,6 +15,9 @@ class Users extends Component {
       this.setState({users: result});
     });
   }
+    userClick(username) {
+      browserHistory.push('/overview/' + username)
+  }
   render() {
     return (
       <table className='table'>
@@ -26,7 +29,7 @@ class Users extends Component {
         </thead>
         <tbody>
           {this.state.users.map(user =>
-            <tr key={ user.firstname}>
+            <tr key={ user.username} onClick={this.userClick.bind(this, user.username)}>
               <td>{ user.firstname }</td>
               <td>{ user.lastname }</td>
             </tr>
