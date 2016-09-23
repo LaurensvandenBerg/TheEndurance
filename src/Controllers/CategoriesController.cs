@@ -20,7 +20,7 @@ namespace Endurance.Controllers
 		public IEnumerable<Expense> Get(string categoryTitle)
 		{
 			var category = context.Categories.FirstOrDefault(c => c.Title.ToUpper() == categoryTitle.ToUpper());
-			return context.Expenses.Where(e => e.Category == category).Select(e => new Expense() { Description = e.Description, Cost = e.Cost, TransactionUTC= e.CreationUTC });
+			return context.Expenses.Where(e => e.Category == category).Select(e => new Expense() { Id = e.Id, Description = e.Description, Cost = e.Cost, TransactionUTC= e.CreationUTC });
 		}
 		
 	}
