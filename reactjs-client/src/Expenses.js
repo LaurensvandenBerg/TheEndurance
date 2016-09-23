@@ -7,11 +7,14 @@ class Expenses extends Component {
 
     this.state = {
       category: props.category,
+      username : props.username,
+      month : props.month,
+      year : props.year,
       expenses: []
     }
   }
   componentWillMount() {
-    getExpenses(this.state.category).then( (result) => {
+    getExpenses(this.state.username, this.state.category, this.state.month, this.state.year).then( (result) => {
       this.setState({expenses: result});
     });
   }
@@ -19,7 +22,7 @@ class Expenses extends Component {
       return (
         <table className="table">
         <tbody>
-          {this.state.expenses.map(expense => 
+          {this.state.expenses.map(expense =>
               <tr key={expense.id} className="row expenses">
                 <td className="col-sm-6">{ expense.description }</td>
                 <td className="col-sm-6 text-right">{ expense.cost }</td>

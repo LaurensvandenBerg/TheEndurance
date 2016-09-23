@@ -23,7 +23,7 @@ class Menu extends Component {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={ '/overview' }>Endurance</Link>
+                    <Link className='navbar-brand' to={ '/overview/maxverstappen?username=maxverstappen&month=3&year=2016' }>Endurance</Link>
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>

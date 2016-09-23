@@ -7,7 +7,9 @@ class Users extends Component {
     super(props);
 
     this.state = {
-      users: []
+      users: [],
+      month : 3,
+      year : 2016
     }
   }
   componentWillMount() {
@@ -15,8 +17,8 @@ class Users extends Component {
       this.setState({users: result});
     });
   }
-    userClick(username) {
-      browserHistory.push('/overview/' + username)
+    userClick(username, month, year) {
+      browserHistory.push('/overview/' + username + '?month='+ month + '&year='+ year)
   }
   render() {
     return (
@@ -29,7 +31,7 @@ class Users extends Component {
         </thead>
         <tbody>
           {this.state.users.map(user =>
-            <tr key={ user.username} onClick={this.userClick.bind(this, user.username)}>
+            <tr key={ user.username} onClick={this.userClick.bind(this, user.username, this.state.month, this.state.year )}>
               <td>{ user.firstname }</td>
               <td>{ user.lastname }</td>
             </tr>

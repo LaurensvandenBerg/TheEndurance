@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { VictoryPie } from 'victory';
-import { getTransactions } from './api/Transactions';
+import { getUserExpenses } from './api/UserExpenses';
 import { Accordion, AccordionItem } from 'react-sanfona';
 import Expenses from './Expenses';
 
@@ -9,13 +9,16 @@ class Transactions extends Component {
     super(props);
 
     this.state = {
-      transactions: [],
-      expenses: {}
+      expenses: [],
+      username : props.username,
+      month : props.month,
+      year : props.year
     }
   }
   componentWillMount() {
-    getTransactions().then( (result) => {
-      this.setState({transactions: result});
+    getUserExpenses(this.state.username, this.state.month, this.state.year).then( (result) => {
+      this.setState({expenses: result});
+      console.log(result);
     });
   }
   render() {
@@ -37,7 +40,7 @@ class Transactions extends Component {
                         strokeWidth: 1
                       }
                     }}
-                    data={this.state.transactions}
+                    data={this.state.expenses}
                     x={"category"}
                     y={"expense"}
                     colorScale={[
@@ -56,9 +59,17 @@ class Transactions extends Component {
                 <div className="col-sm-6">
                 <h4>Expenses</h4>
                   <Accordion>
-                    {this.state.transactions.map(transaction =>             
-                      <AccordionItem title={<div className="row accordionTitle"><div className="col-sm-9 pull-left text-left">{transaction.category}</div><div className="col-sm-2 pull-right text-right">{transaction.expense}</div></div>} slug={transaction.category} key={transaction.category}>
-                        <Expenses category={transaction.category} />
+                    {this.state.expenses.map(expense =>
+                      <AccordionItem title={
+                        <div className="row accordionTitle">
+                          <div className="col-sm-9 pull-left text-left">
+                            {expense.category}
+                          </div>
+                          <div className="col-sm-2 pull-right text-right">
+                            {expense.expense}
+                          </div>
+                        </div>} slug={expense.category} key={expense.category}>
+                        <Expenses category={expense.category} username={this.state.username} month={this.state.month} year={this.state.year} />
                       </AccordionItem>
                     )}
                   </Accordion>
@@ -68,5 +79,4 @@ class Transactions extends Component {
       );
     }
 }
-
 export default Transactions;
