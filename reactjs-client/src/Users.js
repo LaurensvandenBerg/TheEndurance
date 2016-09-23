@@ -8,7 +8,7 @@ class Users extends Component {
 
     this.state = {
       users: [],
-      month : 3,
+      month : 9,
       year : 2016
     }
   }
