@@ -25,8 +25,8 @@ namespace Endurance.Controllers
 			return context.Users.ToList().Select(ToUserModel);
 		}
 
-		[HttpGet]
-		public IEnumerable<UserModel> Get(string username)
+		[HttpGet ("{username}", Name ="GetSpecificuser")]
+		public IEnumerable<UserModel> GetSpecificUser(string username)
 		{
 			return context.Users.Where(u => u.Username == username).Select(ToUserModel);
 		}

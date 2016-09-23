@@ -40,7 +40,7 @@ class Menu extends Component {
                         </li>
                         <li>
                             <Link to={ '/profile' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-user'></span> My Profile
+                                <span className='glyphicon glyphicon-user'></span> Accounts
                             </Link>
                         </li>
                     </ul>
