@@ -29,13 +29,18 @@ class Menu extends Component {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <Link to={ '/about' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-th-list'></span> Analysis
+                            <Link to={ '/profile' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-user'></span> Accounts
                             </Link>
                         </li>
                         <li>
-                            <Link to={ '/profile' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-user'></span> Accounts
+                            <Link to={ '/analysis' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-education'></span> Analysis
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ '/about' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-info-sign'></span> About us
                             </Link>
                         </li>
                     </ul>
