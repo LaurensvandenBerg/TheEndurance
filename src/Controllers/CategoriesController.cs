@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Endurance.Models;
 using System.Linq;
 using Endurance.DbContexts;
+using System;
 
 namespace Endurance.Controllers
 {
@@ -22,6 +23,29 @@ namespace Endurance.Controllers
 			var category = context.Categories.FirstOrDefault(c => c.Title.ToUpper() == categoryTitle.ToUpper());
 			return context.Expenses.Where(e => e.Category == category).Select(e => new Expense() { Id = e.Id, Description = e.Description, Cost = e.Cost, TransactionUTC= e.CreationUTC });
 		}
-		
+
+		[Route("GetForUser")]
+		public IEnumerable<Expense> Get(string username, string categoryTitle, int? month, int? year)
+		{
+			if (!month.HasValue)
+			{
+				month = DateTime.Today.Month;
+			}
+
+			if (!year.HasValue)
+			{
+				year = DateTime.Today.Year;
+			}
+
+			var user = context.User.SingleOrDefault(u => u.Username == username);
+
+			var category = context.Categories.FirstOrDefault(c => c.Title.ToUpper() == categoryTitle.ToUpper());
+			return context.Expenses.Where(e => e.Category == category
+					&& e.User == user
+					&& e.CreationUTC.Month == month
+					&& e.CreationUTC.Year == year)
+				.Select(e => new Expense() { Id = e.Id, Description = e.Description, Cost = e.Cost, TransactionUTC = e.CreationUTC });
+		}
+
 	}
 }

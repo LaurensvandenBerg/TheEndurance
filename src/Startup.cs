@@ -27,7 +27,7 @@ namespace Endurance
 		public void ConfigureServices(IServiceCollection services)
 		{
 			// connection
-			var connection = @"Server=(localdb)\mssqllocaldb;Database=endurance;Trusted_Connection=True;";
+			var connection = @"Server=(localdb)\mssqllocaldb;Database=endurance;Trusted_Connection=True;MultipleActiveResultSets=True;";
 			services.AddDbContext<ExpenseManagementContext>(options => options.UseSqlServer(connection));
 
 			// Add framework services.
@@ -55,8 +55,8 @@ namespace Endurance
 
 			app.UseStaticFiles();
 
-            app.UseCors(builder =>
-                builder.WithOrigins("*"));
+			app.UseCors(builder =>
+				builder.WithOrigins("*"));
 
 			app.UseMvc(routes =>
 			{

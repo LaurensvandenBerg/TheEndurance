@@ -22,13 +22,13 @@ namespace Endurance.Controllers
 		[HttpGet]
 		public IEnumerable<UserModel> Get()
 		{
-			return context.Users.ToList().Select(ToUserModel);
+			return context.User.ToList().Select(ToUserModel);
 		}
 
-		[HttpGet]
+		[Route("GetSpecificUser")]
 		public IEnumerable<UserModel> Get(string username)
 		{
-			return context.Users.Where(u => u.Username == username).Select(ToUserModel);
+			return context.User.Where(u => u.Username == username).Select(ToUserModel);
 		}
 
 		private UserModel ToUserModel(User user)

@@ -11,7 +11,7 @@ namespace Endurance.DbContexts
 
 		public DbSet<Suggestion> Suggestions { get; set; }
 
-		public DbSet<User> Users { get; set; }
+		public DbSet<User> User { get; set; }
 
 		public ExpenseManagementContext(DbContextOptions<ExpenseManagementContext> options)
 		: base(options)

@@ -1,14 +1,20 @@
 import React, { Component } from 'react';
 import Transactions from './Transactions'
 
-class Home extends Component {
+class Overview extends Component {
   constructor(props) {
     super(props);
     
+    console.log(this.props.params.username + this.props.location.query.month + this.props.location.query.year);
     this.state = {
+      username : this.props.params.username,
+      month : this.props.location.query.month,
+      year : this.props.location.query.year
     }
+    //console.log(this.state);
   }
   componentWillMount() {
+
   }
   render () {
       return (
@@ -18,11 +24,11 @@ class Home extends Component {
             <p>Welcome to 'The Endurance', it is a space craft meant for interstellar travel. This space craft is steered by each passenger, they are all pilots. Help steer it with correct velocity and in right direction.</p>
           </div>
           <div className="row">
-            <Transactions />
+            <Transactions username={this.state.username} month={this.state.month} year={this.state.year}/>
           </div>
         </div>
       );
     }
 }
 
-export default Home;
+export default Overview;
