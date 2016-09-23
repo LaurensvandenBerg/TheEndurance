@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Link } from 'react-router'
+import Menu from './Menu';
 
 class App extends Component {
   constructor(props) {
@@ -13,15 +13,15 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <ul className="header">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/about">About</Link></li>
-        </ul>
-        <div className="content">
-          {this.props.children}
+      <div className="App container-fluid">
+        <div className="row">
+          <div className="side col-md-2">
+            <Menu />
+          </div>
+          <div className="content col-md-10">
+            {this.props.children}
+          </div>
         </div>
-
       </div>
     );
   }
