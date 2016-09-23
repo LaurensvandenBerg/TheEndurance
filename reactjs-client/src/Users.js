@@ -12,7 +12,6 @@ class Users extends Component {
   }
   componentWillMount() {
     getUsers().then( (result) => {
-      console.log(result);
       this.setState({users: result});
     });
   }
@@ -26,10 +25,10 @@ class Users extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.users.map(transaction =>
-            <tr key={ transaction.category}>
-              <td>{ transaction.category }</td>
-              <td>{ transaction.expense }</td>
+          {this.state.users.map(user =>
+            <tr key={ user.firstname}>
+              <td>{ user.firstname }</td>
+              <td>{ user.lastname }</td>
             </tr>
           ) }
         </tbody>
