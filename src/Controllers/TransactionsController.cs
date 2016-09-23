@@ -73,7 +73,7 @@ namespace Endurance.Controllers
 			if (user != null)
 			{
 				var specifiedMonthExpenses = GetExpensesFor(user, month, year);
-				var previousMonthExpenses = GetExpensesFor(user, month, year);
+				var previousMonthExpenses = GetExpensesFor(user, previousMonth, year);
 
 				return ComparedExpenses(specifiedMonthExpenses, previousMonthExpenses);
 			}

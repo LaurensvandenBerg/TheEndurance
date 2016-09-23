@@ -18,7 +18,6 @@ class Transactions extends Component {
   componentWillMount() {
     getUserExpenses(this.state.username, this.state.month, this.state.year).then( (result) => {
       this.setState({expenses: result});
-      console.log(result);
     });
   }
   render() {
