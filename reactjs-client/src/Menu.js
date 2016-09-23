@@ -5,7 +5,7 @@ import './Menu.css';
 class Menu extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
     }
   }
@@ -36,6 +36,11 @@ class Menu extends Component {
                         <li>
                             <Link to={ '/about' } activeClassName='active'>
                                 <span className='glyphicon glyphicon-th-list'></span> Analysis
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to={ '/profile' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-user'></span> My Profile
                             </Link>
                         </li>
                     </ul>
