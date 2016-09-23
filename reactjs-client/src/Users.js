@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router'
 import { getUsers } from './api/Users'
+import FontAwesome from 'react-fontawesome';
 
 class Users extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Users extends Component {
         <thead>
           <tr>
             <th>Name</th>
-            <th>Lastname</th>
+            <th>Last name</th>
           </tr>
         </thead>
         <tbody>

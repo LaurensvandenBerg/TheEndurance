@@ -48,3 +48,8 @@
 table {
   width: 100%;
 }
+
+table tbody tr:hover > td {
+  cursor: pointer;
+  background-color: #eee; 
+}
