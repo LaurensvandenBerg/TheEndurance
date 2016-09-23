@@ -9,7 +9,7 @@ using System.Linq;
 
 namespace Endurance.Controllers
 {
-	[Route("api/[user]")]
+	[Route("api/[controller]")]
 	public class UserController : Controller
 	{
 		readonly ExpenseManagementContext context;
