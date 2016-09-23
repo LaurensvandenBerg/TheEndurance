@@ -4,6 +4,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import App from './App';
 import Home from './Home';
 import About from './About';
+import Users from './Users';
 import './index.css';
 
 var NoMatch = React.createClass({
@@ -22,6 +23,7 @@ ReactDOM.render(
       <IndexRoute component={Home}/>
       <Route path="home" component={Home}/>
       <Route path="about" component={About}/>
+      <Route path="profile" component={Users}/>
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>)
