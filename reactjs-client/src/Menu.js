@@ -29,11 +29,6 @@ class Menu extends Component {
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <Link to={ '/overview' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-home'></span> Overview
-                            </Link>
-                        </li>
-                        <li>
                             <Link to={ '/about' } activeClassName='active'>
                                 <span className='glyphicon glyphicon-th-list'></span> Analysis
                             </Link>
