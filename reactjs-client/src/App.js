@@ -39,11 +39,37 @@ class App extends Component {
               ) }
             </tbody>
           </table>
-          <VictoryPie
-            data={this.state.transactions}
-            x={"category"}
-            y={"expense"}
-           />          
+          <div className="row">
+            <div className="col-md-3 chart">
+              <VictoryPie className="col-md-3"
+                labelRadius={85}
+                innerRadius={60}
+                style={{
+                  labels: {
+                    fontSize: 14,
+                    fill: "white"
+                  },
+                  data: {
+                    stroke: "gray",
+                    strokeDasharray: "0",
+                    strokeWidth: 1
+                  }
+                }}
+                data={this.state.transactions}
+                x={"category"}
+                y={"expense"}
+                colorScale={[
+                  "#38206b",
+                  "#603275",
+                  "#3d72d0",
+                  "#d8973b",
+                  "#3a5b96",
+                  "#8732ad",
+                  "#0c5f11"
+                ]}
+              />
+            </div>
+          </div>     
         </div>
       </div>
     );
