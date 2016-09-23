@@ -8,9 +8,10 @@ using Endurance.DbContexts;
 namespace src.Migrations
 {
     [DbContext(typeof(ExpenseManagementContext))]
-    partial class ExpenseManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20160922205848_CreatingUsers")]
+    partial class CreatingUsers
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")
@@ -58,20 +59,6 @@ namespace src.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Expenses");
-                });
-
-            modelBuilder.Entity("Endurance.DbContexts.DataModels.Suggestion", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("message");
-
-                    b.Property<string>("subject");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Suggestions");
                 });
 
             modelBuilder.Entity("Endurance.DbContexts.DataModels.User", b =>
