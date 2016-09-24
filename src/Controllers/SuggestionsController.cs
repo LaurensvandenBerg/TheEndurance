@@ -167,44 +167,50 @@ namespace Endurance.Controllers
 			{
 				{
 					"Travel", new List<Advertisment> {
-						new Advertisment { CompanyName ="NS", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
-						new Advertisment { CompanyName ="HTM", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
-						new Advertisment { CompanyName ="Connexxion", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+						new Advertisment { CompanyName ="NS", Contact="+31-654821395", Location = "Amsterdam, The Netherlands", Url ="www.ns.nl" },
+						new Advertisment { CompanyName ="HTM", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url ="www.htm.nl" },
+						new Advertisment { CompanyName ="Connexxion", Contact="+31-721862049", Location = "Eindhoven, The Netherlands", Url ="www.connexxion.nl" },
+						new Advertisment { CompanyName ="GVB", Contact="+31-611222333", Location = "Haarlem, The Netherlands", Url ="www.gvb.nl" },
+						new Advertisment { CompanyName ="Pro Rail", Contact="+31-634975203", Location = "Leiden, The Netherlands", Url ="www.prorail.nl" }
 					}
 				},
 				{
 					"Insurance", new List<Advertisment> {
-						new Advertisment { CompanyName ="Zekur", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
-						new Advertisment { CompanyName ="Aevitae", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
-						new Advertisment { CompanyName ="Beheer", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+						new Advertisment { CompanyName ="Zekur", Contact="+31-630479501", Location = "Amsterdam, The Netherlands", Url="www.zekur.nl" },
+						new Advertisment { CompanyName ="Aevitae", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.aevitae.nl" },
+						new Advertisment { CompanyName ="Beheer", Contact="+31-642685364", Location = "Eindhoven, The Netherlands", Url="www.beheer.nl" },
+						new Advertisment { CompanyName ="Mendis", Contact="+31-634895127", Location = "Haarlem, The Netherlands", Url="www.mendis.nl" },
+						new Advertisment { CompanyName ="FBTO", Contact="+31-637495214", Location = "Zwolle, The Netherlands", Url="www.fbto.nl" },
 					}
 				},
 				{
 					"Entertainment", new List<Advertisment> {
-						new Advertisment { CompanyName ="Path", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
-						new Advertisment { CompanyName ="Vue", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
-						new Advertisment { CompanyName ="Luxar", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+						new Advertisment { CompanyName ="Pathe", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.pathe.nl" },
+						new Advertisment { CompanyName ="Vue", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.vue.nl" },
+						new Advertisment { CompanyName ="Luxor", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.luxor.nl" }
 					}
 				},
 				{
 					"Utilities", new List<Advertisment> {
-						new Advertisment { CompanyName ="Essent", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
-						new Advertisment { CompanyName ="Qurrent", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
-						new Advertisment { CompanyName ="Independer", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+						new Advertisment { CompanyName ="Essent", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.essent.nl" },
+						new Advertisment { CompanyName ="Qurrent", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.qurrent.nl" },
+						new Advertisment { CompanyName ="Independer", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.independer.nl" }
 					}
 				},
 				{
 					"Groceries", new List<Advertisment> {
-						new Advertisment { CompanyName ="Albert Heijn", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
-						new Advertisment { CompanyName ="Hoogvliet", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
-						new Advertisment { CompanyName ="Jumbo", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+						new Advertisment { CompanyName ="Albert Heijn", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.ah.nl" },
+						new Advertisment { CompanyName ="Hoogvliet", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.hv.nl" },
+						new Advertisment { CompanyName ="Jumbo", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.jumbo.nl" },
+						new Advertisment { CompanyName ="Eko Plaza", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.ekoplaza.nl" },
+						new Advertisment { CompanyName ="Sainsbury", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.sainsbury.nl" },
 					}
 				},
 				{
 					"Dining", new List<Advertisment> {
-						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
-						new Advertisment { CompanyName ="Burger King", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
-						new Advertisment { CompanyName ="KFC", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
+						new Advertisment { CompanyName ="Burger King", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" },
+						new Advertisment { CompanyName ="KFC", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.kfc.nl" }
 					}
 				}
 			};

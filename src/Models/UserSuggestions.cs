@@ -36,5 +36,6 @@
 		public string Location { get; set; }
 		public string Contact { get; set; }
 		public string ServiceText { get; set; }
+		public string Url { get; set; }
 	}
 }

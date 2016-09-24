@@ -53,3 +53,8 @@ table.hoverable tbody tr:hover > td {
   cursor: pointer;
   background-color: #eee; 
 }
+
+h3{
+    padding: 0px;
+    margin: 0px;
+}

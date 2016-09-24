@@ -25,7 +25,7 @@ class Suggestions extends Component {
   render () {
       return (
         <div className="container-fluid page">
-            <div className="well well-lg row header">
+            <div className="well well-sm row header">
                 <div className="col-xs-9">
                     <h2>{ this.state.suggestions.firstname } { this.state.suggestions.lastname }</h2> 
                 </div>
@@ -54,17 +54,25 @@ class Suggestions extends Component {
                 </tbody>
             </table>
 
-        <ul>
-            {this.state.advertisments.map(function(advertisment) {
-                return (<div key={ advertisment.companyName } >
-                <div className="well well-lg row header">
-                    <div className="col-xs-9">
-                        <h2>{ advertisment.companyName }</h2> 
-                    </div>
-                </div>
-                <div className='clearfix'></div></div>);
-            })}
-        </ul>
+            <ul>
+                {this.state.advertisments.map(function(advertisment) {
+                    return (<div key={ advertisment.companyName } className="container-fluid page" >
+                    <a href={ advertisment.url }>
+                        <div className="well well-sm row">
+                            <div className="col-xs-9">
+                                <h3>{ advertisment.companyName }</h3>
+                            </div> 
+                            <div className="col-xs-3">
+                                <i className="glyphicon glyphicon-earphone"></i> { advertisment.contact }
+                            </div>
+                            <div className="col-xs-3">
+                                <i className="glyphicon glyphicon-map-marker"></i> { advertisment.location }
+                            </div> 
+                        </div>
+                    </a>
+                    </div>);
+                })}
+            </ul>
             
 
           </div>
