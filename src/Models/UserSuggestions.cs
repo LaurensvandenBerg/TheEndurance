@@ -9,6 +9,8 @@
 		public string Lastname { get; set; }
 
 		public CategorySuggestion[] CategorySuggestions { get; set; }
+
+		public Advertisment[] Advertisments { get; set; }
 	}
 
 	public class CategorySuggestion
@@ -26,5 +28,13 @@
 		Winning,
 		Losing,
 		Danger
+	}
+
+	public class Advertisment
+	{
+		public string CompanyName { get; set; }
+		public string Location { get; set; }
+		public string Contact { get; set; }
+		public string ServiceText { get; set; }
 	}
 }

@@ -8,7 +8,8 @@ class Suggestions extends Component {
     this.state = {
       username : this.props.params.username,
       suggestions: {},
-      categorySuggestions: []
+      categorySuggestions: [],
+      advertisments: []
     }
   }
 
@@ -16,16 +17,21 @@ class Suggestions extends Component {
     getSuggestionsFor(this.state.username).then( (result) => {
       this.setState({suggestions: result});
       this.setState({categorySuggestions: result.categorySuggestions});
-      console.dir(result.categorySuggestions);
+      this.setState({advertisments: result.advertisments});
+      console.dir(result);
     });
   }
 
   render () {
       return (
         <div className="container-fluid page">
-          <div className="row header">
-            <p>{ this.state.suggestions.firstname } { this.state.suggestions.lastname }</p>
-          </div>
+            <div className="well well-lg row header">
+                <div className="col-xs-9">
+                    <h2>{ this.state.suggestions.firstname } { this.state.suggestions.lastname }</h2> 
+                </div>
+            </div>
+            <div className='clearfix'></div>
+          
           <div className="row">
             <table className='table'>
                 <thead>
@@ -47,6 +53,20 @@ class Suggestions extends Component {
                     ) }
                 </tbody>
             </table>
+
+        <ul>
+            {this.state.advertisments.map(function(advertisment) {
+                return (<div key={ advertisment.companyName } >
+                <div className="well well-lg row header">
+                    <div className="col-xs-9">
+                        <h2>{ advertisment.companyName }</h2> 
+                    </div>
+                </div>
+                <div className='clearfix'></div></div>);
+            })}
+        </ul>
+            
+
           </div>
         </div>
       );

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { VictoryPie, VictoryGroup, VictoryBar } from 'victory';
+import { VictoryPie } from 'victory';
 import { getUserExpenses } from './api/UserExpenses';
 import { getMonthComparisons } from './api/MonthComparisons'
 import { Accordion, AccordionItem } from 'react-sanfona';
@@ -30,7 +30,6 @@ class Transactions extends Component {
       return (
 
           <div className="container-fluid">
-          <h1>{this.state.username}</h1>
               <div className="chart col-sm-6">
                 <VictoryPie
                     labelRadius={85}
