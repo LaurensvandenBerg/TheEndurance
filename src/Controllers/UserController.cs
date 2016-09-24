@@ -26,9 +26,9 @@ namespace Endurance.Controllers
 		}
 
 		[Route("GetSpecificUser")]
-		public IEnumerable<UserModel> Get(string username)
+		public UserModel Get(string username)
 		{
-			return context.User.Where(u => u.Username == username).Select(ToUserModel);
+			return ToUserModel(context.User.Single(u => u.Username == username));
 		}
 
 		private UserModel ToUserModel(User user)

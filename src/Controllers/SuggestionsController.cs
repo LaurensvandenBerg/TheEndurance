@@ -21,7 +21,7 @@ namespace Endurance.Controllers
 		[HttpGet]
 		public IEnumerable<Models.Suggestion> Get(string subject)
 		{
-			return context.Suggestions.Where(s => s.subject == subject).Select(s => new Models.Suggestion() { subject= s.subject, message = s.message});
+			return context.Suggestions.Where(s => s.subject == subject).Select(s => new Models.Suggestion() { subject = s.subject, message = s.message });
 		}
 
 		[Route("GetForUser")]
@@ -42,12 +42,13 @@ namespace Endurance.Controllers
 				var userExpenses = GetExpensesFor(user, month, year).ToArray();
 
 				var nearbyUsers = context.User.Where(u =>
-					u.Id != user.Id 
+					u.Id != user.Id
 					&& IsLessThan100Km(user.Latitude.Value, user.Longitude.Value, u.Latitude.Value, u.Longitude.Value)
 					&& HasSimilarFamilySize(user.NumberOfFamilyMembers, u.NumberOfFamilyMembers)
 					&& IsInSimilarIncomeGroup(user.Income, u.Income));
 
 				List<CategorySuggestion> categorySuggestions = new List<CategorySuggestion>();
+				List<Advertisment> advertisments = new List<Advertisment>();
 
 				foreach (var concernedUserExpense in userExpenses)
 				{
@@ -74,8 +75,13 @@ namespace Endurance.Controllers
 						}
 					}
 
+					if (winning < losing)
+					{
+						advertisments.Add(GetRandomAdvertisment(concernedUserExpense.Category));
+					}
 					categorySuggestions.Add(GetCategorySuggestion(concernedUserExpense.Category, concernedUserExpense.Expense, winning, losing));
 					suggestion.CategorySuggestions = categorySuggestions.ToArray();
+					suggestion.Advertisments = advertisments.ToArray();
 				}
 			}
 
@@ -90,20 +96,23 @@ namespace Endurance.Controllers
 		private CategorySuggestion GetCategorySuggestion(string category, double expense, int winning, int losing)
 		{
 			string suggestion = "Not sufficient data";
+			Status status = Status.Winning;
 			if (winning > losing)
 			{
-				suggestion = "You are totally nailing in '" + category + "', by spending '" + expense + "' in this month";
+				suggestion = "You are totally nailing in '" + category + "', by spending only '" + expense + "' in this month";
 			}
 			else if (winning == losing)
 			{
 				suggestion = "There is room to improvement for you in '" + category + "' some users have done but some users are better in your region";
+				status = Status.Losing;
 			}
 			else
 			{
 				suggestion = "There are more than 50% users in your region who are doing better than you in this '" + category + "'";
+				status = Status.Danger;
 			}
 
-			return new CategorySuggestion { Category = category, Winnings = winning, Losings = losing, Suggestion = suggestion };
+			return new CategorySuggestion { Category = category, Winnings = winning, Losings = losing, Suggestion = suggestion, Status = status, Expense = expense };
 		}
 
 		private bool IsLessThan100Km(double lat1, double lon1, double lat2, double lon2)
@@ -115,7 +124,7 @@ namespace Endurance.Controllers
 			dist = dist * 60 * 1.1515;
 			dist = dist * 1.609344;
 
-			return  dist  < 100.0;
+			return dist < 100.0;
 		}
 
 		private double deg2rad(double deg)
@@ -145,5 +154,61 @@ namespace Endurance.Controllers
 			return Math.Abs(change / income1) < 15;
 		}
 
+		private Advertisment GetRandomAdvertisment(string category)
+		{
+			var random = new Random();
+			return StaticAds.Ads[category][random.Next(0, 2)];
+		}
+	}
+
+	internal static class StaticAds
+	{
+		public static Dictionary<string, List<Advertisment>> Ads = new Dictionary<string, List<Advertisment>>
+			{
+				{
+					"Travel", new List<Advertisment> {
+						new Advertisment { CompanyName ="NS", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
+						new Advertisment { CompanyName ="HTM", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
+						new Advertisment { CompanyName ="Connexxion", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+					}
+				},
+				{
+					"Insurance", new List<Advertisment> {
+						new Advertisment { CompanyName ="Zekur", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
+						new Advertisment { CompanyName ="Aevitae", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
+						new Advertisment { CompanyName ="Beheer", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+					}
+				},
+				{
+					"Entertainment", new List<Advertisment> {
+						new Advertisment { CompanyName ="Path", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
+						new Advertisment { CompanyName ="Vue", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
+						new Advertisment { CompanyName ="Luxar", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+					}
+				},
+				{
+					"Utilities", new List<Advertisment> {
+						new Advertisment { CompanyName ="Essent", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
+						new Advertisment { CompanyName ="Qurrent", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
+						new Advertisment { CompanyName ="Independer", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+					}
+				},
+				{
+					"Groceries", new List<Advertisment> {
+						new Advertisment { CompanyName ="Albert Heijn", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
+						new Advertisment { CompanyName ="Hoogvliet", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
+						new Advertisment { CompanyName ="Jumbo", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+					}
+				},
+				{
+					"Dining", new List<Advertisment> {
+						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-611222333", Location = "Amsterdam, The Netherlands" },
+						new Advertisment { CompanyName ="Burger King", Contact="+31-674083451", Location = "Den Haag, The Netherlands" },
+						new Advertisment { CompanyName ="KFC", Contact="+31-611222333", Location = "Eindhoven, The Netherlands" }
+					}
+				}
+			};
+
 	}
 }
+
