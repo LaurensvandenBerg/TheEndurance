@@ -5,6 +5,7 @@ import App from './App';
 import Overview from './Overview';
 import About from './About';
 import Users from './Users';
+import Suggestions from './Suggestions';
 import './index.css';
 
 var NoMatch = React.createClass({
@@ -24,6 +25,7 @@ ReactDOM.render(
       <Route path="overview/:username" component={Overview}/>
       <Route path="about" component={About}/>
       <Route path="profile" component={Users}/>
+      <Route path="suggestions/:username" component={Suggestions}/>
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>)

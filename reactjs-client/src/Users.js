@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { browserHistory } from 'react-router'
-import { getUsers } from './api/Users'
-import FontAwesome from 'react-fontawesome';
+import { getUsers } from './api/Users';
 
 class Users extends Component {
   constructor(props) {
@@ -23,7 +22,7 @@ class Users extends Component {
   }
   render() {
     return (
-      <table className='table'>
+      <table className='table hoverable'>
         <thead>
           <tr>
             <th>Name</th>

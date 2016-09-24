@@ -1,4 +1,4 @@
-﻿namespace Endurance.DbContexts.DataModels
+﻿namespace Endurance.Models
 {
 	public class UserSuggestions
 	{
@@ -14,9 +14,17 @@
 	public class CategorySuggestion
 	{
 		public string Category { get; set; }
+		public double Expense { get; set; }
 		public int Winnings { get; set; }
 		public int Losings { get; set; }
-
 		public string Suggestion { get; set; }
+		public Status Status { get; set; }
+	}
+
+	public enum Status
+	{
+		Winning,
+		Losing,
+		Danger
 	}
 }

@@ -90,6 +90,7 @@ namespace Endurance.Controllers
 		private CategorySuggestion GetCategorySuggestion(string category, double expense, int winning, int losing)
 		{
 			string suggestion = "Not sufficient data";
+			Status status = Status.Winning;
 			if (winning > losing)
 			{
 				suggestion = "You are totally nailing in '" + category + "', by spending '" + expense + "' in this month";
@@ -97,13 +98,15 @@ namespace Endurance.Controllers
 			else if (winning == losing)
 			{
 				suggestion = "There is room to improvement for you in '" + category + "' some users have done but some users are better in your region";
+				status = Status.Losing;
 			}
 			else
 			{
 				suggestion = "There are more than 50% users in your region who are doing better than you in this '" + category + "'";
+				status = Status.Danger;
 			}
 
-			return new CategorySuggestion { Category = category, Winnings = winning, Losings = losing, Suggestion = suggestion };
+			return new CategorySuggestion { Category = category, Winnings = winning, Losings = losing, Suggestion = suggestion, Status = status, Expense = expense };
 		}
 
 		private bool IsLessThan100Km(double lat1, double lon1, double lat2, double lon2)
@@ -147,3 +150,4 @@ namespace Endurance.Controllers
 
 	}
 }
+

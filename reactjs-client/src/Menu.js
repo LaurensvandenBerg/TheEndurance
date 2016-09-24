@@ -34,11 +34,6 @@ class Menu extends Component {
                             </Link>
                         </li>
                         <li>
-                            <Link to={ '/analysis' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-education'></span> Analysis
-                            </Link>
-                        </li>
-                        <li>
                             <Link to={ '/about' } activeClassName='active'>
                                 <span className='glyphicon glyphicon-info-sign'></span> About us
                             </Link>
