@@ -24,19 +24,41 @@ class Transactions extends Component {
     getMonthComparisons(this.state.username, this.state.month, this.state.year).then( (result) => {
       this.setState({comparisons : result});
     });
-    console.log(this.state.comparisons);
   }
   render() {
       return (
 
           <div className="container-fluid">
-              <div className="chart col-sm-6">
+            <div className="row">
+              <div className="col-sm-7">
+                <h3 className="text-center">September, 2016</h3>
+                <br />
+                <br />
+                <br />
+                <Accordion>
+                  {this.state.expenses.map(expense =>
+                    <AccordionItem title={
+                      <div className="row accordionTitle">
+                        <div className="col-sm-9 pull-left text-left">
+                          {expense.category}
+                        </div>
+                        <div className="col-sm-2 pull-right text-right">
+                          {expense.expense}
+                        </div>
+                      </div>} slug={expense.category} key={expense.category}>
+                      <Expenses category={expense.category} username={this.state.username} month={this.state.month} year={this.state.year} />
+                    </AccordionItem>
+                    )}
+                </Accordion>
+              </div>
+              <div className="chart col-sm-5">
                 <VictoryPie
-                    labelRadius={85}
-                    innerRadius={60}
+                    labelRadius={95}
+                    innerRadius={40}
+                    standlone={false}
                     style={{
                       labels: {
-                        fontSize: 14,
+                        fontSize: 12,
                         fill: "white"
                       },
                       data: {
@@ -58,51 +80,32 @@ class Transactions extends Component {
                       "#0c5f11"
                     ]}
                 />
-            </div>
-            <div className="row">
-              <div className="col-sm-6">
-              <h4>Expenses</h4>
-                <Accordion>
-                  {this.state.expenses.map(expense =>
-                    <AccordionItem title={
-                      <div className="row accordionTitle">
-                        <div className="col-sm-9 pull-left text-left">
-                          {expense.category}
-                        </div>
-                        <div className="col-sm-2 pull-right text-right">
-                          {expense.expense}
-                        </div>
-                      </div>} slug={expense.category} key={expense.category}>
-                      <Expenses category={expense.category} username={this.state.username} month={this.state.month} year={this.state.year} />
-                    </AccordionItem>
-                  )}
-                </Accordion>
               </div>
             </div>
             <div className="row">
-            <h3>Change over last month</h3>
-            <table className='table'>
-                <thead>
-                    <tr>
-                      <th></th>
-                        <th>Category</th>
-                        <th>Previous month</th>
-                        <th>This month</th>
-                        <th>Change</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.state.comparisons.map(comparison =>
-                        <tr className={ comparison.isWinning === false ? 'bg-danger' : '' }  key={ comparison.category}>
-                            <td className={ comparison.isWinning === true ? '' : 'glyphicon glyphicon-exclamation-sign' }></td>
-                            <td>{ comparison.category }</td>
-                            <td>{ comparison.previousMonthCost }</td>
-                            <td>{ comparison.specifiedMonthCost }</td>
-                            <td>{comparison.variance}</td>
-                        </tr>
-                    ) }
-                </tbody>
-            </table>
+              <h3>Change over last month</h3>
+              <table className='table'>
+                  <thead>
+                      <tr>
+                        <th></th>
+                          <th>Category</th>
+                          <th>Previous month</th>
+                          <th>This month</th>
+                          <th>Change</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {this.state.comparisons.map(comparison =>
+                          <tr className={ comparison.isWinning === false ? 'bg-danger' : '' }  key={ comparison.category}>
+                              <td className={ comparison.isWinning === true ? '' : 'glyphicon glyphicon-exclamation-sign' }></td>
+                              <td>{ comparison.category }</td>
+                              <td>{ comparison.previousMonthCost }</td>
+                              <td>{ comparison.specifiedMonthCost }</td>
+                              <td>{comparison.variance}</td>
+                          </tr>
+                      ) }
+                  </tbody>
+              </table>
             </div>
           </div>
       );
