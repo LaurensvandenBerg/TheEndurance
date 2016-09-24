@@ -28,10 +28,10 @@ class Transactions extends Component {
   }
   render() {
       return (
+
           <div className="container-fluid">
-          <div className="col-sm-6 row">
-            <div className="row">
-              <div className="chart">
+          <h1>{this.state.username}</h1>
+              <div className="chart col-sm-6">
                 <VictoryPie
                     labelRadius={85}
                     innerRadius={60}
@@ -59,7 +59,6 @@ class Transactions extends Component {
                       "#0c5f11"
                     ]}
                 />
-              </div>
             </div>
             <div className="row">
               <div className="col-sm-6">
@@ -81,32 +80,30 @@ class Transactions extends Component {
                 </Accordion>
               </div>
             </div>
-            </div>
             <div className="row">
-              <div className="col-sm-6">
-              <div className="chart">
-                <VictoryGroup
-                  height={500}
-                  offset={20}
-                  colorScale={"qualitative"}
-                >
-                  <VictoryBar
-                    data={[
-                      {x: 1, y: 1},
-                      {x: 2, y: 2},
-                      {x: 3, y: 3}
-                    ]}
-                  />
-                  <VictoryBar
-                    data={[
-                      {x: 1, y: 1},
-                      {x: 2, y: 2},
-                      {x: 3, y: 6}
-                    ]}
-                  />
-                  </VictoryGroup>
-                </div>
-              </div>
+            <h3>Change over last month</h3>
+            <table className='table'>
+                <thead>
+                    <tr>
+                      <th></th>
+                        <th>Category</th>
+                        <th>Previous month</th>
+                        <th>This month</th>
+                        <th>Change</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {this.state.comparisons.map(comparison =>
+                        <tr className={ comparison.isWinning === false ? 'bg-danger' : '' }  key={ comparison.category}>
+                            <td className={ comparison.isWinning === true ? '' : 'glyphicon glyphicon-exclamation-sign' }></td>
+                            <td>{ comparison.category }</td>
+                            <td>{ comparison.previousMonthCost }</td>
+                            <td>{ comparison.specifiedMonthCost }</td>
+                            <td>{comparison.variance}</td>
+                        </tr>
+                    ) }
+                </tbody>
+            </table>
             </div>
           </div>
       );

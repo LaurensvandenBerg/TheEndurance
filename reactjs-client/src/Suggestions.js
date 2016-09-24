@@ -4,7 +4,7 @@ import { getSuggestionsFor } from './api/Suggestions';
 class Suggestions extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
       username : this.props.params.username,
       suggestions: {},
