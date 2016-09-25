@@ -60,12 +60,13 @@ class Transactions extends Component {
               </div>
               <div className="chart col-sm-5">
                 <VictoryPie
-                    labelRadius={95}
-                    innerRadius={40}
+                    labelRadius={90}
+                    innerRadius={0}
                     standlone={false}
                     style={{
                       labels: {
-                        fontSize: 12,
+                        fontFamily: "Futura",
+                        fontSize: 14,
                         fill: "white"
                       }
                     }}
@@ -73,12 +74,12 @@ class Transactions extends Component {
                     x={"category"}
                     y={"expense"}
                     colorScale={[
-                      "#38206b",
-                      "#603275",
-                      "#3d72d0",
-                      "#d8973b",
-                      "#3a5b96",
-                      "#8732ad",
+                      "#D4E157",
+                      "#9CCC65",
+                      "#26C6DA",
+                      "#29B6F6",
+                      "#AB47BC",
+                      "#Ec407A",
                       "#0c5f11"
                     ]}
                 />
