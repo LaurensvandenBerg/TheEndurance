@@ -3,6 +3,7 @@ import { VictoryPie } from 'victory';
 import { getUserExpenses } from './api/UserExpenses';
 import { getMonthComparisons } from './api/MonthComparisons'
 import { Accordion, AccordionItem } from 'react-sanfona';
+import { browserHistory } from 'react-router';
 import Expenses from './Expenses';
 
 class Transactions extends Component {
@@ -17,6 +18,7 @@ class Transactions extends Component {
       year : props.year
     }
   }
+
   componentWillMount() {
     getUserExpenses(this.state.username, this.state.month, this.state.year).then( (result) => {
       this.setState({expenses: result});
@@ -25,13 +27,18 @@ class Transactions extends Component {
       this.setState({comparisons : result});
     });
   }
+  
+  userClick(username, month, year) {
+      browserHistory.push('/suggestions/' + username);
+  }
+
   render() {
       return (
 
           <div className="container-fluid">
             <div className="row">
               <div className="col-sm-7">
-                <h3 className="text-center">September, 2016</h3>
+                <h3 >September, 2016</h3>
                 <br />
                 <br />
                 <br />
@@ -60,11 +67,6 @@ class Transactions extends Component {
                       labels: {
                         fontSize: 12,
                         fill: "white"
-                      },
-                      data: {
-                        stroke: "gray",
-                        strokeDasharray: "0",
-                        strokeWidth: 1
                       }
                     }}
                     data={this.state.expenses}
@@ -83,25 +85,32 @@ class Transactions extends Component {
               </div>
             </div>
             <div className="row">
-              <h3>Change over last month</h3>
+              <div className="container-fluid">
+                <div className="col-md-8">
+                  <h3>Since last month</h3>
+                </div>
+                <div className="col-md-2 pull-right">
+              <button className="btn btn-primary" onClick={this.userClick.bind(this, this.state.username)}>Suggestions</button>
+                </div>
+              </div>
               <table className='table'>
                   <thead>
                       <tr>
-                        <th></th>
+                          <th></th>
                           <th>Category</th>
-                          <th>Previous month</th>
-                          <th>This month</th>
-                          <th>Change</th>
+                          <th></th>
                       </tr>
                   </thead>
                   <tbody>
                       {this.state.comparisons.map(comparison =>
-                          <tr className={ comparison.isWinning === false ? 'bg-danger' : '' }  key={ comparison.category}>
-                              <td className={ comparison.isWinning === true ? '' : 'glyphicon glyphicon-exclamation-sign' }></td>
+                          <tr className={ comparison.variance < 0 ? 'bg-danger' : '' }  key={ comparison.category}>
+                              <td className={ comparison.variance < 0 ? 'glyphicon glyphicon-exclamation-sign' : '' }></td>
                               <td>{ comparison.category }</td>
-                              <td>{ comparison.previousMonthCost }</td>
-                              <td>{ comparison.specifiedMonthCost }</td>
-                              <td>{comparison.variance}</td>
+                              { comparison.variance < 0 
+                                ? <td>Overspent € { comparison.variance } this month :-( </td> 
+                                : comparison.variance === 0
+                                  ? <td> Spent same amount this month </td>
+                                  : <td> Awesome, you found a way to spend less. You saved € { comparison.variance }. Keep rocking!!! </td> }
                           </tr>
                       ) }
                   </tbody>
