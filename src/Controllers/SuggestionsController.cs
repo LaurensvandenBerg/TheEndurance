@@ -99,16 +99,16 @@ namespace Endurance.Controllers
 			Status status = Status.Winning;
 			if (winning > losing)
 			{
-				suggestion = "You are totally nailing in '" + category + "', by spending only '" + expense + "' in this month";
+				suggestion = "You are totally nailing it in " + category + ", by spending only " + expense + " this month";
 			}
 			else if (winning == losing)
 			{
-				suggestion = "There is room to improvement for you in '" + category + "' some users have done but some users are better in your region";
+				suggestion = "There is room to improvement for you in " + category + " some users have done but some users are better in your region";
 				status = Status.Losing;
 			}
 			else
 			{
-				suggestion = "There are more than 50% users in your region who are doing better than you in this '" + category + "'";
+				suggestion = "More than 50% of the users in your region who have a lower spending in " + category;
 				status = Status.Danger;
 			}
 
@@ -156,8 +156,7 @@ namespace Endurance.Controllers
 
 		private Advertisment GetRandomAdvertisment(string category)
 		{
-			var random = new Random();
-			return StaticAds.Ads[category][random.Next(0, 2)];
+			return StaticAds.Ads[category][0];
 		}
 	}
 
@@ -167,11 +166,7 @@ namespace Endurance.Controllers
 			{
 				{
 					"Travel", new List<Advertisment> {
-						new Advertisment { CompanyName ="NS", Contact="+31-654821395", Location = "Amsterdam, The Netherlands", Url ="www.ns.nl" },
-						new Advertisment { CompanyName ="HTM", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url ="www.htm.nl" },
-						new Advertisment { CompanyName ="Connexxion", Contact="+31-721862049", Location = "Eindhoven, The Netherlands", Url ="www.connexxion.nl" },
-						new Advertisment { CompanyName ="GVB", Contact="+31-611222333", Location = "Haarlem, The Netherlands", Url ="www.gvb.nl" },
-						new Advertisment { CompanyName ="Pro Rail", Contact="+31-634975203", Location = "Leiden, The Netherlands", Url ="www.prorail.nl" }
+						new Advertisment { CompanyName ="Ross Travel", Contact="+31-654821395", Location = "Dreef 2, Belgium", Url ="www.roostravel.be" }
 					}
 				},
 				{
@@ -180,35 +175,29 @@ namespace Endurance.Controllers
 						new Advertisment { CompanyName ="Aevitae", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.aevitae.nl" },
 						new Advertisment { CompanyName ="Beheer", Contact="+31-642685364", Location = "Eindhoven, The Netherlands", Url="www.beheer.nl" },
 						new Advertisment { CompanyName ="Mendis", Contact="+31-634895127", Location = "Haarlem, The Netherlands", Url="www.mendis.nl" },
-						new Advertisment { CompanyName ="FBTO", Contact="+31-637495214", Location = "Zwolle, The Netherlands", Url="www.fbto.nl" },
+						new Advertisment { CompanyName ="FBTO", Contact="+31-637495214", Location = "Zwolle, The Netherlands", Url="www.fbto.nl" }
 					}
 				},
 				{
 					"Entertainment", new List<Advertisment> {
-						new Advertisment { CompanyName ="Pathe", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.pathe.nl" },
+						new Advertisment { CompanyName ="Pathe", Contact="+31-638753951", Location = "Amsterdam, The Netherlands", Url="www.pathe.nl" },
 						new Advertisment { CompanyName ="Vue", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.vue.nl" },
 						new Advertisment { CompanyName ="Luxor", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.luxor.nl" }
 					}
 				},
 				{
 					"Utilities", new List<Advertisment> {
-						new Advertisment { CompanyName ="Essent", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.essent.nl" },
-						new Advertisment { CompanyName ="Qurrent", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.qurrent.nl" },
-						new Advertisment { CompanyName ="Independer", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.independer.nl" }
+						new Advertisment { CompanyName ="Gas-Trading Holland B.V.", Contact="+31-628707985", Location = "Niewerkerk aan de Ijssel, The Netherlands", Url="www.grstrading.nl" }
 					}
 				},
 				{
 					"Groceries", new List<Advertisment> {
-						new Advertisment { CompanyName ="Albert Heijn", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.ah.nl" },
-						new Advertisment { CompanyName ="Hoogvliet", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.hv.nl" },
-						new Advertisment { CompanyName ="Jumbo", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.jumbo.nl" },
-						new Advertisment { CompanyName ="Eko Plaza", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.ekoplaza.nl" },
-						new Advertisment { CompanyName ="Sainsbury", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.sainsbury.nl" },
+						new Advertisment { CompanyName ="Supermarkt Diever BV", Contact="+31-635042587", Location = "Hoofdstraat 82", Url="www.supermarktdiever.nl" }
 					}
 				},
 				{
 					"Dining", new List<Advertisment> {
-						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-611222333", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
+						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-674083451", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
 						new Advertisment { CompanyName ="Burger King", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" },
 						new Advertisment { CompanyName ="KFC", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.kfc.nl" }
 					}

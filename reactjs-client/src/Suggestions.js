@@ -33,6 +33,9 @@ class Suggestions extends Component {
             <div className='clearfix'></div>
           
           <div className="row">
+              <div className="col-md-8">
+                  <h4>Comparison with users nearby you with similar circumstances</h4>
+            </div>
             <table className='table'>
                 <thead>
                     <tr>
@@ -53,6 +56,12 @@ class Suggestions extends Component {
                     ) }
                 </tbody>
             </table>
+
+            <div className="row">
+              <div className="col-md-8">
+                  <h4>Companies that can help you improve your saving / spending behaviour</h4>
+            </div>
+            </div>
 
             <ul>
                 {this.state.advertisments.map(function(advertisment) {
