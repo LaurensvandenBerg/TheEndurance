@@ -65,21 +65,23 @@ class Suggestions extends Component {
 
             <ul>
                 {this.state.advertisments.map(function(advertisment) {
-                    return (<div key={ advertisment.companyName } className="container-fluid page" >
-                    <a href={ advertisment.url }>
-                        <div className="well well-sm row">
-                            <div className="col-xs-9">
-                                <h3>{ advertisment.companyName }</h3>
-                            </div> 
-                            <div className="col-xs-3">
-                                <i className="glyphicon glyphicon-earphone"></i> { advertisment.contact }
+                    return (
+                    <div key={ advertisment.companyName } className="container-fluid advertisement col-md-3" >
+                        <a href={ advertisment.url }>
+                            <div className="well well-sm">
+                                <div className="">
+                                    <h3>{ advertisment.companyName }</h3>
+                                </div> 
+                                <div className="">
+                                    <i className="glyphicon glyphicon-earphone"></i> { advertisment.contact }
+                                </div>
+                                <div className="">
+                                    <i className="glyphicon glyphicon-map-marker"></i> { advertisment.location }
+                                </div> 
                             </div>
-                            <div className="col-xs-3">
-                                <i className="glyphicon glyphicon-map-marker"></i> { advertisment.location }
-                            </div> 
-                        </div>
-                    </a>
-                    </div>);
+                        </a>
+                    </div>
+                    );
                 })}
             </ul>
             

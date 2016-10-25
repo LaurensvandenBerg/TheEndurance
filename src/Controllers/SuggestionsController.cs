@@ -34,8 +34,8 @@ namespace Endurance.Controllers
 				suggestion.Firstname = user.Firstname;
 				suggestion.Lastname = user.Lastname;
 
-				var month = DateTime.Today.Month;
-				var year = DateTime.Today.Year;
+				var month = 9;
+				var year = 2016;
 
 				context.Categories.ToList();
 

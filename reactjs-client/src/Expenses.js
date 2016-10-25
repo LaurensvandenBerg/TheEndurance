@@ -24,8 +24,8 @@ class Expenses extends Component {
         <tbody>
           {this.state.expenses.map(expense =>
               <tr key={expense.id} className="row expenses">
-                <td className="col-sm-6">{ expense.description }</td>
-                <td className="col-sm-6 text-right">{ expense.cost }</td>
+                <td className="col-sm-6 expense-description">{ expense.description }</td>
+                <td className="col-sm-6 text-right expense-cost">{ expense.cost }</td>
               </tr>
           )}
           </tbody>

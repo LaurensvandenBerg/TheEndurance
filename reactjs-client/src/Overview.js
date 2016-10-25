@@ -22,16 +22,18 @@ class Overview extends Component {
   render () {
       return (
         <div className="container-fluid page">
-          <div className="well well-sm row">
-            <div className="col-md-6">
+          <div className="user-info container-fluid well well-sm pull-right">
+            <div className="row">
               <h3>{ this.state.userInfo.firstname } { this.state.userInfo.lastname }</h3>
-              <br /> 
-              <i className="glyphicon glyphicon-envelope"></i> { this.state.userInfo.username }@me.com
-              <br />
-              <i className="glyphicon glyphicon-map-marker"></i> Delft, The Netherlands
+            </div>
+            <div className="row">
+              <i className="glyphicon glyphicon-envelope"></i> { this.state.userInfo.username }@endurance.com
+            </div>
+            <div className="row">
+              <i className="glyphicon glyphicon-map-marker"></i> Utrecht, The Netherlands
             </div>
           </div>
-          <div className="row">
+          <div className="row inner-content">
             <Transactions username={this.state.username} month={this.state.month} year={this.state.year}/>
           </div>
         </div>
