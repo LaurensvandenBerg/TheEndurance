@@ -14,6 +14,14 @@
   color: white;
 }
 
+.navbar-brand {
+  line-height: 1.2;
+}
+
+.navbar-brand .app-slogan {
+  font-size: 14px;
+}
+
 .App-Body {
   text-align: left;
 }

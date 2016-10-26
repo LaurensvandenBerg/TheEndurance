@@ -13,8 +13,8 @@ class About extends Component {
     return (
         <div className="container-fluid page">
           <div className="row header">
-            <h2>Welcome to Endurance</h2>
-            <p>Welcome to 'The Endurance', it is a spacecraft meant for interstellar travel. This spacecraft is steered by each occupant, they are all pilots. Help by steering it with the correct velocity and in the right direction.</p>
+            <h2>Welkom bij Endurance</h2>
+            <p>Welkom bij 'The Endurance'. Endurance is een ruimteschip voor het reizen in de ruimte. Dit ruimteschip wordt bestuurd door elke inzittende, zij zijn allemaal piloten. Help mee door dit ruimteschip te sturen in de juiste richting met de juiste snelheid.</p>
           </div>
           <div className="row">
             <ul>

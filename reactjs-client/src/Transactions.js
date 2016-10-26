@@ -40,7 +40,7 @@ class Transactions extends Component {
                 <div className="expenses row">
                   <h3 >September, 2016</h3>
                   <br />
-                  <h4>Expense break-up</h4>
+                  <h4>Maandelijkse uitgaven</h4>
                   <Accordion>
                     {this.state.expenses.map((expense, i) =>
                       <AccordionItem title={
@@ -58,13 +58,14 @@ class Transactions extends Component {
                   </Accordion>
                 </div>
                 <div className="comparison row">
-                  <h4>Comparison since last month</h4>
+                  <h4>Vergelijking met vorige maand</h4>
                   <table className='table'>
                     <thead>
                       <tr>
                         <th></th>
-                        <th>Category</th>
-                        <th>Comparison</th>
+                        <th>Categorie</th>
+                        <th>Resultaat</th>
+                        <th>Saldo</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -73,10 +74,15 @@ class Transactions extends Component {
                           <td className={ comparison.variance < 0 ? 'glyphicon glyphicon-exclamation-sign' : '' }></td>
                           <td>{ comparison.category }</td>
                           { comparison.variance < 0 
-                            ? <td>Overspent € { comparison.variance } this month :-( </td> 
+                            ? <td>Meer uitgegeven</td> 
                             : comparison.variance === 0
-                              ? <td> Spent same amount this month </td>
-                              : <td> Awesome, you found a way to spend less. You saved € { comparison.variance }. Keep rocking!!! </td> }
+                              ? <td>Hetzelfde uitegeven</td>
+                              : <td>Minder uitgegeven</td> }
+                          { comparison.variance < 0 
+                            ? <td>+ {comparison.variance}</td> 
+                            : comparison.variance === 0
+                              ? <td>0</td>
+                              : <td>- {comparison.variance}</td> }
                         </tr>
                       ) }
                     </tbody>

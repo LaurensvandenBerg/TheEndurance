@@ -7,16 +7,20 @@ class App extends Component {
     super(props);
     
     this.state = {
+      username: ''
     }
   }
   componentWillMount() {
+    if (this.props.params && this.props.params.username) {
+      this.setState({ username: this.props.params.username })
+    }
   }
   render() {
     return (
       <div className="App container-fluid">
         <div className="row">
           <div className="side col-md-2">
-            <Menu />
+            <Menu username={this.state.username} />
           </div>
           <div className="content col-md-10">
             {this.props.children}

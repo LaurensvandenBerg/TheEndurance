@@ -18,7 +18,7 @@ class Users extends Component {
     });
   }
     userClick(username, month, year) {
-      browserHistory.push('/overview/' + username + '?month='+ month + '&year='+ year)
+      browserHistory.push('/' + username)
   }
   render() {
     return (

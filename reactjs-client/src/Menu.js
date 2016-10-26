@@ -7,9 +7,13 @@ class Menu extends Component {
     super(props);
 
     this.state = {
+        username: ''
     }
   }
   componentWillMount() {
+      if (this.props && this.props.username) {
+          this.setState({ username: this.props.username });
+      }
   }
   render () {
       return (
@@ -23,19 +27,25 @@ class Menu extends Component {
                         <span className='icon-bar'></span>
                         <span className='icon-bar'></span>
                     </button>
-                    <Link className='navbar-brand' to={ '/overview/maxverstappen?username=maxverstappen&month=3&year=2016' }>Endurance</Link>
+                    <Link className='navbar-brand' to={ '/' }>
+                        <div className="app-name">Endurance</div>
+                        <div className="app-slogan">Beheers uw uitgaven, beheers uw bedrijf.</div>
+                    </Link>
                 </div>
                 <div className='clearfix'></div>
                 <div className='navbar-collapse collapse'>
                     <ul className='nav navbar-nav'>
                         <li>
-                            <Link to={ '/profile' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-user'></span> Accounts
+                            <Link to={ '/' + this.state.username + '/overview' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-transfer'></span> Uitgaven
+                            </Link>
+                            <Link to={ '/' + this.state.username + '/suggestions' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-eur'></span> Suggesties
                             </Link>
                         </li>
                         <li>
-                            <Link to={ '/about' } activeClassName='active'>
-                                <span className='glyphicon glyphicon-info-sign'></span> About us
+                            <Link to={ '/' + this.state.username + '/about' } activeClassName='active'>
+                                <span className='glyphicon glyphicon-info-sign'></span> Over Endurance
                             </Link>
                         </li>
                     </ul>

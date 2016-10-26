@@ -18,7 +18,6 @@ class Suggestions extends Component {
       this.setState({suggestions: result});
       this.setState({categorySuggestions: result.categorySuggestions});
       this.setState({advertisments: result.advertisments});
-      console.dir(result);
     });
   }
 

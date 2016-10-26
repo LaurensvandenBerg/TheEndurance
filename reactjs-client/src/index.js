@@ -20,12 +20,13 @@ var NoMatch = React.createClass({
 
 ReactDOM.render(
   (<Router history={browserHistory}>
-    <Route path="/" component={App}>
-      <IndexRoute component={Users}/>
-      <Route path="overview/:username" component={Overview}/>
+    <Route path="/" component={Users} />
+    <Route path="/:username" component={App}>
+      <IndexRoute component={Overview}/>
+      <Route path="overview" component={Overview}/>
       <Route path="about" component={About}/>
       <Route path="profile" component={Users}/>
-      <Route path="suggestions/:username" component={Suggestions}/>
+      <Route path="suggestions" component={Suggestions}/>
       <Route path="*" component={NoMatch}/>
     </Route>
   </Router>)

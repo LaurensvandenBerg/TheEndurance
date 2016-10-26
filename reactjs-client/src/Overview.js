@@ -8,8 +8,8 @@ class Overview extends Component {
     
     this.state = {
       username : this.props.params.username,
-      month : this.props.location.query.month,
-      year : this.props.location.query.year,
+      month : 9,
+      year : 2016,
       userInfo: {}
     }
   }
@@ -30,7 +30,7 @@ class Overview extends Component {
               <i className="glyphicon glyphicon-envelope"></i> { this.state.userInfo.username }@endurance.com
             </div>
             <div className="row">
-              <i className="glyphicon glyphicon-map-marker"></i> Utrecht, The Netherlands
+              <i className="glyphicon glyphicon-map-marker"></i> Utrecht, Nederland
             </div>
           </div>
           <div className="row inner-content">
