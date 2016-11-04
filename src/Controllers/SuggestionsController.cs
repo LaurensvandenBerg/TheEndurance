@@ -140,7 +140,7 @@ namespace Endurance.Controllers
 		private IEnumerable<CategoryExpense> GetExpensesFor(User user, int month, int year)
 		{
 			var expenses = context.Expenses.Where(e => e.User == user && e.CreationUTC.Month == month && e.CreationUTC.Year == year).GroupBy(e => e.Category);
-			return expenses.Select(e => new CategoryExpense { Expense = e.Sum(t => t.Cost), Category = e.Key.Title });
+			return expenses.Select(e => new CategoryExpense { Expense = Math.Round(e.Sum(t => t.Cost), 2), Category = e.Key.Title });
 		}
 
 		private bool HasSimilarFamilySize(int numberOfFamilyMembers1, int numberOfFamilyMembers2)

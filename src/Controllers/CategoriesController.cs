@@ -40,7 +40,8 @@ namespace Endurance.Controllers
 			var user = context.User.SingleOrDefault(u => u.Username == username);
 
 			var category = context.Categories.FirstOrDefault(c => c.Title.ToUpper() == categoryTitle.ToUpper());
-			return context.Expenses.Where(e => e.Category == category
+			var expenses = context.Expenses.ToArray();
+			return expenses.Where(e => e.Category == category
 					&& e.User == user
 					&& e.CreationUTC.Month == month
 					&& e.CreationUTC.Year == year)
