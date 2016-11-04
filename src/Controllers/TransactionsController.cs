@@ -34,12 +34,16 @@ namespace Endurance.Controllers
 		[Route("GetForUser")]
 		public IEnumerable<CategoryExpense> Get(string username, int? month, int? year)
 		{
-			if (!month.HasValue)
+			if (!month.HasValue || month.Value == 0)
 			{
 				month = DateTime.Today.Month;
 			}
+			else
+			{
+				month++;
+			}
 
-			if (!year.HasValue)
+			if (!year.HasValue || year.Value == 0)
 			{
 				year = DateTime.Today.Year;
 			}

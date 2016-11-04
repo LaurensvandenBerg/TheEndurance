@@ -34,8 +34,8 @@ namespace Endurance.Controllers
 				suggestion.Firstname = user.Firstname;
 				suggestion.Lastname = user.Lastname;
 
-				var month = 9;
-				var year = 2016;
+				var month = DateTime.Today.Month;
+				var year = DateTime.Today.Year;
 
 				context.Categories.ToList();
 
@@ -196,10 +196,16 @@ namespace Endurance.Controllers
 					}
 				},
 				{
-					"Dining", new List<Advertisment> {
+					"Dinning out", new List<Advertisment> {
 						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-674083451", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
 						new Advertisment { CompanyName ="Burger King", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" },
 						new Advertisment { CompanyName ="KFC", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.kfc.nl" }
+					}
+				},
+				{
+					"Rent", new List<Advertisment> {
+						new Advertisment { CompanyName ="ACM Vastgoed", Contact="+31-674083451", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
+						new Advertisment { CompanyName ="Woonbron", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" }
 					}
 				}
 			};
