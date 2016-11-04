@@ -19,7 +19,7 @@
 }
 
 .navbar-brand .app-slogan {
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .App-Body {
@@ -133,4 +133,13 @@ h3{
   border-radius: 10px;
   overflow: hidden;
   border-collapse: separate;
+}
+
+.nav.navbar-languages li {
+  display: inline-block;
+}
+
+.nav.navbar-languages {
+  padding: 10px;
+  padding-left: 20px;
 }

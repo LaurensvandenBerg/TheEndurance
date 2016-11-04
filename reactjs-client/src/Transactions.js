@@ -5,6 +5,7 @@ import { getMonthComparisons } from './api/MonthComparisons'
 import { Accordion, AccordionItem } from 'react-sanfona';
 import { browserHistory } from 'react-router';
 import Expenses from './Expenses';
+import LocalizedStrings from 'react-localization';
 
 class Transactions extends Component {
   constructor(props) {
@@ -33,6 +34,26 @@ class Transactions extends Component {
   }
 
   render() {
+    var strings = new LocalizedStrings({
+      en: {
+        monthlyExpenses: "Monthly expenses",
+        comparisonLastMonth: "Comparison with last month",
+        category: "Category",
+        result: "Result",
+        balance: "Balance",
+        moreThan: "Spent more",
+        lessThan: "Spent less",
+        sameAs: "Spent same"
+      },
+      nl: {
+        monthlyExpenses: "Maandelijkse uitgaven",
+        comparisonLastMonth: "Vergelijking met vorige maand",
+        category: "Categorie",
+        result: "Resultaat",
+        balance: "Saldo",
+        sameAs: "Hetzelfde uitgegeven"
+      }
+    })
       return (
           <div className="container-fluid">
             <div className="row">
@@ -40,7 +61,7 @@ class Transactions extends Component {
                 <div className="expenses row">
                   <h3 >September, 2016</h3>
                   <br />
-                  <h4>Maandelijkse uitgaven</h4>
+                  <h4>{strings.monthlyExpenses}</h4>
                   <Accordion>
                     {this.state.expenses.map((expense, i) =>
                       <AccordionItem title={
@@ -58,14 +79,14 @@ class Transactions extends Component {
                   </Accordion>
                 </div>
                 <div className="comparison row">
-                  <h4>Vergelijking met vorige maand</h4>
+                  <h4>{strings.comparisonLastMonth}</h4>
                   <table className='table'>
                     <thead>
                       <tr>
                         <th></th>
-                        <th>Categorie</th>
-                        <th>Resultaat</th>
-                        <th>Saldo</th>
+                        <th>{strings.category}</th>
+                        <th>{strings.result}</th>
+                        <th>{strings.balance}</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -74,10 +95,10 @@ class Transactions extends Component {
                           <td className={ comparison.variance < 0 ? 'glyphicon glyphicon-exclamation-sign' : '' }></td>
                           <td>{ comparison.category }</td>
                           { comparison.variance < 0 
-                            ? <td>Meer uitgegeven</td> 
+                            ? <td>{strings.moreThan}</td> 
                             : comparison.variance === 0
-                              ? <td>Hetzelfde uitegeven</td>
-                              : <td>Minder uitgegeven</td> }
+                              ? <td>{strings.sameAs}</td>
+                              : <td>{strings.lessThan}</td> }
                           { comparison.variance < 0 
                             ? <td>+ {comparison.variance}</td> 
                             : comparison.variance === 0

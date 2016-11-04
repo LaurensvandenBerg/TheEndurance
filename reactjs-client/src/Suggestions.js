@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { getSuggestionsFor } from './api/Suggestions';
+import LocalizedStrings from 'react-localization';
 
 class Suggestions extends Component {
   constructor(props) {
@@ -22,6 +23,22 @@ class Suggestions extends Component {
   }
 
   render () {
+      var strings = new LocalizedStrings({
+          en: {
+              title: "Comparison with users nearby you with similar circumstances",
+              category: "Category",
+              expense: "Expense",
+              suggestion: "Suggestion",
+              advertisementTitle: "Companies that help you improve your spending"
+          },
+          nl: {
+              title: "Vergelijking met gebruikers in uw omgeving met vergelijkbare omstandigheden",
+              category: "Categorie",
+              expense: "Uitgave",
+              suggestion: "Suggestie",
+              advertisementTitle: "Bedrijven die u kunnen helpen uw uitgaven te verminderen"
+          }
+      })
       return (
         <div className="container-fluid page">
             <div className="well well-sm row header">
@@ -33,15 +50,15 @@ class Suggestions extends Component {
           
           <div className="row">
               <div className="col-md-8">
-                  <h4>Comparison with users nearby you with similar circumstances</h4>
+                  <h4>{strings.title}</h4>
             </div>
             <table className='table'>
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Category</th>
-                        <th>Expense</th>
-                        <th>Suggestion </th>
+                        <th>{strings.category}</th>
+                        <th>{strings.expense}</th>
+                        <th>{strings.suggestion}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -58,7 +75,7 @@ class Suggestions extends Component {
 
             <div className="row">
               <div className="col-md-8">
-                  <h4>Companies that can help you improve your saving / spending behaviour</h4>
+                  <h4>{strings.advertisementTitle}</h4>
             </div>
             </div>
 

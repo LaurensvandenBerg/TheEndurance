@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Menu from './Menu';
+import './languages/languages.min.css';
 
 class App extends Component {
   constructor(props) {

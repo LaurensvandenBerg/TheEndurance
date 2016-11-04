@@ -9,6 +9,7 @@
     "react": "^15.3.2",
     "react-bootstrap": "^0.30.3",
     "react-dom": "^15.3.2",
+    "react-localization": "0.0.8",
     "react-router": "^2.8.1",
     "react-sanfona": "0.0.15",
     "victory": "^0.12.1"
