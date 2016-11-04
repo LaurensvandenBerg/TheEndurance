@@ -43,7 +43,21 @@ class Transactions extends Component {
         balance: "Balance",
         moreThan: "Spent more",
         lessThan: "Spent less",
-        sameAs: "Spent same"
+        sameAs: "Spent same",
+        months: [
+          "January",
+          "February",
+          "March",
+          "April",
+          "May",
+          "June",
+          "July",
+          "August",
+          "September",
+          "October",
+          "November",
+          "December"          
+        ]
       },
       nl: {
         monthlyExpenses: "Maandelijkse uitgaven",
@@ -51,7 +65,23 @@ class Transactions extends Component {
         category: "Categorie",
         result: "Resultaat",
         balance: "Saldo",
-        sameAs: "Hetzelfde uitgegeven"
+        moreThan: "Meer uitgegeven",
+        lessThan: "Minder uitgegeven",
+        sameAs: "Hetzelfde uitgegeven",
+        months: [
+          "Januari",
+          "Februari",
+          "Maart",
+          "April",
+          "Mei",
+          "Juni",
+          "Juli",
+          "Augustus",
+          "September",
+          "Oktober",
+          "November",
+          "December"
+        ]
       }
     })
       return (
@@ -59,7 +89,7 @@ class Transactions extends Component {
             <div className="row">
               <div className="col-sm-7">
                 <div className="expenses row">
-                  <h3 >September, 2016</h3>
+                  <h3 >{strings.months[this.state.month]}, {this.state.year}</h3>
                   <br />
                   <h4>{strings.monthlyExpenses}</h4>
                   <Accordion>
