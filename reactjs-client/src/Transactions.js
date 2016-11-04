@@ -112,14 +112,17 @@ class Transactions extends Component {
               </div>
               <div className="chart col-sm-5">
                 <VictoryPie
-                    labelRadius={90}
-                    innerRadius={0}
+                    cornerRadius={3}
+                    labelRadius={140}
+                    innerRadius={50}
+                    padAngle={1}
+                    padding={75}
                     standlone={false}
                     style={{
                       labels: {
-                        fontFamily: "Futura",
-                        fontSize: 14,
-                        fill: "white"
+                        fontFamily: "Arial",
+                        fontSize: 12,
+                        fill: "black"
                       }
                     }}
                     data={this.state.expenses}

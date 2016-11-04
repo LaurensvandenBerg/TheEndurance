@@ -41,6 +41,7 @@
 
 .chart {
   overflow: visible;
+  z-index: 999;
 }
 
 .react-sanfona-item {
