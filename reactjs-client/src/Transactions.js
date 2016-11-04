@@ -100,10 +100,10 @@ class Transactions extends Component {
                               ? <td>{strings.sameAs}</td>
                               : <td>{strings.lessThan}</td> }
                           { comparison.variance < 0 
-                            ? <td>+ {comparison.variance}</td> 
+                            ? <td>{comparison.variance}</td> 
                             : comparison.variance === 0
                               ? <td>0</td>
-                              : <td>- {comparison.variance}</td> }
+                              : <td>{comparison.variance}</td> }
                         </tr>
                       ) }
                     </tbody>

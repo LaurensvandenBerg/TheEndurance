@@ -83,7 +83,7 @@ namespace Endurance.Controllers
 		private IEnumerable<CategoryExpense> GetExpensesFor(User user, int? month, int? year)
 		{
 			var expenses = context.Expenses.Where(e => e.User == user && e.CreationUTC.Month == month.Value && e.CreationUTC.Year == year.Value).GroupBy(e => e.Category);
-			return expenses.Select(e => new CategoryExpense { Expense = e.Sum(t => t.Cost), Category = e.Key.Title });
+			return expenses.Select(e => new CategoryExpense { Expense = Math.Round(e.Sum(t => t.Cost), 2) , Category = e.Key.Title });
 		}
 
 		private IEnumerable<CategoryExpenseComparison> ComparedExpenses(IEnumerable<CategoryExpense> latestMonthExpenses, IEnumerable<CategoryExpense> previousMonthExpenses)
@@ -110,7 +110,7 @@ namespace Endurance.Controllers
 				{
 					existingEntry.PreviousMonthCost = expense.Expense;
 					existingEntry.SpecifiedMonthCost = latestMonthCost;
-					existingEntry.Variance = expense.Expense - latestMonthCost;
+					existingEntry.Variance = Math.Round(expense.Expense - latestMonthCost, 2);
 					existingEntry.IsWinning = existingEntry.Variance > 0;
 				}
 			}
