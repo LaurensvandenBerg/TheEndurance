@@ -48,12 +48,10 @@ namespace Endurance.Controllers
 				year = DateTime.Today.Year;
 			}
 
-			FetchCategories();
-
 			var user = context.User.SingleOrDefault(u => u.Username == username);
 			if (user != null)
 			{
-				return GetExpensesFor(user, month, year);
+				return GetExpensesFor(user, month.Value, year.Value);
 			}
 			return new CategoryExpense[0];
 		}
@@ -72,22 +70,25 @@ namespace Endurance.Controllers
 			}
 
 			int? previousMonth = new DateTime(year.Value, month.Value, 1).AddMonths(-1).Month;
-			FetchCategories();
 			var user = context.User.SingleOrDefault(u => u.Username == username);
 			if (user != null)
 			{
-				var specifiedMonthExpenses = GetExpensesFor(user, month, year);
-				var previousMonthExpenses = GetExpensesFor(user, previousMonth, year);
+				var specifiedMonthExpenses = GetExpensesFor(user, month.Value, year.Value);
+				var previousMonthExpenses = GetExpensesFor(user, previousMonth.Value, year.Value);
 
 				return ComparedExpenses(specifiedMonthExpenses, previousMonthExpenses);
 			}
 			return new CategoryExpenseComparison[0];
 		}
 
-		private IEnumerable<CategoryExpense> GetExpensesFor(User user, int? month, int? year)
+		private IEnumerable<CategoryExpense> GetExpensesFor(User user, int month, int year)
 		{
-			var expenses = context.Expenses.Where(e => e.User == user && e.CreationUTC.Month == month.Value && e.CreationUTC.Year == year.Value).GroupBy(e => e.Category);
-			return expenses.Select(e => new CategoryExpense { Expense = Math.Round(e.Sum(t => t.Cost), 2) , Category = e.Key.Title });
+			return context.UserMonthlyExpenses.Where(ume => ume.User == user && ume.Month == month && ume.Year == year).Select(ume => new CategoryExpense
+			{
+				Category = ume.Category.Title,
+				Expense = ume.Cost
+
+			});
 		}
 
 		private IEnumerable<CategoryExpenseComparison> ComparedExpenses(IEnumerable<CategoryExpense> latestMonthExpenses, IEnumerable<CategoryExpense> previousMonthExpenses)

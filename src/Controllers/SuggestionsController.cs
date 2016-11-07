@@ -139,8 +139,12 @@ namespace Endurance.Controllers
 
 		private IEnumerable<CategoryExpense> GetExpensesFor(User user, int month, int year)
 		{
-			var expenses = context.Expenses.Where(e => e.User == user && e.CreationUTC.Month == month && e.CreationUTC.Year == year).GroupBy(e => e.Category);
-			return expenses.Select(e => new CategoryExpense { Expense = Math.Round(e.Sum(t => t.Cost), 2), Category = e.Key.Title });
+			return context.UserMonthlyExpenses.Where(ume => ume.User == user && ume.Month == month && ume.Year == year).Select(ume => new CategoryExpense
+			{
+				Category = ume.Category.Title,
+				Expense = ume.Cost
+
+			});
 		}
 
 		private bool HasSimilarFamilySize(int numberOfFamilyMembers1, int numberOfFamilyMembers2)
@@ -204,7 +208,7 @@ namespace Endurance.Controllers
 				},
 				{
 					"Rent", new List<Advertisment> {
-						new Advertisment { CompanyName ="ACM Vastgoed", Contact="+31-674083451", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
+						new Advertisment { CompanyName ="ACM Vastgoed", Contact="+31-24 382 0000", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
 						new Advertisment { CompanyName ="Woonbron", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" }
 					}
 				}
