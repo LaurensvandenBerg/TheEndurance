@@ -8,9 +8,10 @@ using Endurance.DbContexts;
 namespace src.Migrations
 {
     [DbContext(typeof(ExpenseManagementContext))]
-    partial class ExpenseManagementContextModelSnapshot : ModelSnapshot
+    [Migration("20161107052509_CreatingUserMonthlyExpenses")]
+    partial class CreatingUserMonthlyExpenses
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.0.1")

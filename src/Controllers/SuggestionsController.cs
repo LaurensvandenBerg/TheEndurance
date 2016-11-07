@@ -34,8 +34,8 @@ namespace Endurance.Controllers
 				suggestion.Firstname = user.Firstname;
 				suggestion.Lastname = user.Lastname;
 
-				var month = 9;
-				var year = 2016;
+				var month = DateTime.Today.Month;
+				var year = DateTime.Today.Year;
 
 				context.Categories.ToList();
 
@@ -139,8 +139,12 @@ namespace Endurance.Controllers
 
 		private IEnumerable<CategoryExpense> GetExpensesFor(User user, int month, int year)
 		{
-			var expenses = context.Expenses.Where(e => e.User == user && e.CreationUTC.Month == month && e.CreationUTC.Year == year).GroupBy(e => e.Category);
-			return expenses.Select(e => new CategoryExpense { Expense = Math.Round(e.Sum(t => t.Cost), 2), Category = e.Key.Title });
+			return context.UserMonthlyExpenses.Where(ume => ume.User == user && ume.Month == month && ume.Year == year).Select(ume => new CategoryExpense
+			{
+				Category = ume.Category.Title,
+				Expense = ume.Cost
+
+			});
 		}
 
 		private bool HasSimilarFamilySize(int numberOfFamilyMembers1, int numberOfFamilyMembers2)
@@ -196,10 +200,16 @@ namespace Endurance.Controllers
 					}
 				},
 				{
-					"Dining", new List<Advertisment> {
+					"Dinning out", new List<Advertisment> {
 						new Advertisment { CompanyName ="Mc Donalds", Contact="+31-674083451", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
 						new Advertisment { CompanyName ="Burger King", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" },
 						new Advertisment { CompanyName ="KFC", Contact="+31-611222333", Location = "Eindhoven, The Netherlands", Url="www.kfc.nl" }
+					}
+				},
+				{
+					"Rent", new List<Advertisment> {
+						new Advertisment { CompanyName ="ACM Vastgoed", Contact="+31-24 382 0000", Location = "Amsterdam, The Netherlands", Url="www.mcdonals.nl" },
+						new Advertisment { CompanyName ="Woonbron", Contact="+31-674083451", Location = "Den Haag, The Netherlands", Url="www.bk.nl" }
 					}
 				}
 			};
